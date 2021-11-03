@@ -1,0 +1,86 @@
+
+version: '3.4'
+
+services:
+  owner:
+    image: owner
+    depends_on:
+      - redis
+      - placement
+    ports:
+      - "5001:5001"
+    build:
+      context: .
+      dockerfile: owner/Dockerfile
+    environment:
+      - DAPR_HTTP_PORT=3501
+      - ASPNETCORE_URLS=http://localhost:5001
+    networks:
+      - example-network
+
+  replicaone:
+    image: replicaone
+    depends_on:
+      - redis
+      - placement
+    ports:
+      - "5002:5002"
+    build:
+      context: .
+      dockerfile: replicaone/Dockerfile
+    environment:
+      - DAPR_HTTP_PORT=3502
+      - ASPNETCORE_URLS=http://localhost:5002
+    networks:
+      - example-network
+
+  owner-dapr:
+    image: "daprio/daprd:edge"
+    command: [
+      "./daprd",
+     "--app-id", "ownerapp",
+     "--dapr-http-port", "3501",
+     "--app-port", "5001",
+    #  "--log-level", "debug",
+     "--components-path", "/components",
+     "--placement-host-address", "placement:50006" # Dapr's placement service can be reach via the docker DNS entry
+    ]      
+    volumes:
+        - "./components/:/components" # Mount our components folder for the runtime to use
+    network_mode: "service:owner"      
+
+  replicaone-dapr:
+    image: "daprio/daprd:edge"
+    command: [
+      "./daprd",
+     "--app-id", "replicaoneapp",
+     "--dapr-http-port", "3502",
+     "--app-port", "5002",
+    #  "--log-level", "debug",
+     "--components-path", "/components",
+     "--placement-host-address", "placement:50006" # Dapr's placement service can be reach via the docker DNS entry
+    ]      
+    volumes:
+        - "./components/:/components" # Mount our components folder for the runtime to use
+    network_mode: "service:replicaone"
+
+  placement:
+    image: "daprio/dapr"
+    command: [
+      "./placement", 
+      # "--log-level", "debug",
+      "-port", "50006"
+    ]
+    ports:
+      - "50006:50006"
+    networks:
+      - example-network
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6380:6379"
+    networks:
+      - example-network
+networks:
+  example-network:      

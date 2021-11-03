@@ -1,0 +1,7 @@
+
+version: '3.4'
+
+services:
+  owner:
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
