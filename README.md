@@ -10,11 +10,21 @@ The sample is self contained with Docker and can be run locally with:
 docker-compose up --build
 ```
 
+## Upload dapr image from local build
+
+```bash
+export DAPR_REGISTRY=docker.io/shubham1172
+export DAPR_TAG=dev
+make build-linux
+make docker-build
+make docker-push
+```
+
 ## Code walkthrough
 
 The setup is with a publisher and a subscriber, named `owner` and `replicaone` respectively. On startup, `replicaone` invokes an Actor method in `owner` that publishes 5 records with the current time. The events are subscribed to by `replicaone`.
 
-## Sample output
+## Original output
 
 When running the code in Docker the trailing output should look similar to:
 
@@ -33,3 +43,19 @@ replicaone_1       | Got event            : {"int32":1796901791,"uint32":1796901
 ```
 
 Note here that the `int64` and `uint64` values are "truncated" when received. For instance, the last row has the value `637715205864246892` but the recieved value is `637715205864246900`, showing a difference in the last two decimals. In all cases the last two decimals are set to zero. The binary value transmitted with base64 encoding is not altered, but shows that the sent and received values are _supposed_ to be the same.
+
+## After migrating from json-iterator to encoding/json
+
+```
+replicaone_1       | Requesting data from proxy: 1ffca099-df2d-41b6-8676-2a08e2af5756
+owner_1            | Publishing record 1/5: {"int32":545706050,"uint32":545706050,"int64":637830114315518474,"uint64":637830114315518474,"base64long":"CsLSDhwH2gg=","base64int":"QtCGIA=="}
+replicaone_1       | Got event            : {"int32":545706050,"uint32":545706050,"int64":637830114315518500,"uint64":637830114315518500,"base64long":"CsLSDhwH2gg=","base64int":"QtCGIA=="}
+owner_1            | Publishing record 2/5: {"int32":558100276,"uint32":558100276,"int64":637830114327912700,"uint64":637830114327912700,"base64long":"/OCPDxwH2gg=","base64int":"NO9DIQ=="}
+replicaone_1       | Got event            : {"int32":558100276,"uint32":558100276,"int64":637830114327912700,"uint64":637830114327912700,"base64long":"/OCPDxwH2gg=","base64int":"NO9DIQ=="}
+owner_1            | Publishing record 3/5: {"int32":561174761,"uint32":561174761,"int64":637830114330987185,"uint64":637830114330987185,"base64long":"scq\u002BDxwH2gg=","base64int":"6dhyIQ=="}
+replicaone_1       | Got event            : {"int32":561174761,"uint32":561174761,"int64":637830114330987100,"uint64":637830114330987100,"base64long":"scq\u002BDxwH2gg=","base64int":"6dhyIQ=="}
+owner_1            | Publishing record 4/5: {"int32":567815820,"uint32":567815820,"int64":637830114337628244,"uint64":637830114337628244,"base64long":"VCAkEBwH2gg=","base64int":"jC7YIQ=="}
+replicaone_1       | Got event            : {"int32":567815820,"uint32":567815820,"int64":637830114337628300,"uint64":637830114337628300,"base64long":"VCAkEBwH2gg=","base64int":"jC7YIQ=="}
+owner_1            | Publishing record 5/5: {"int32":575538210,"uint32":575538210,"int64":637830114345350634,"uint64":637830114345350634,"base64long":"6vWZEBwH2gg=","base64int":"IgROIg=="}
+replicaone_1       | Got event            : {"int32":575538210,"uint32":575538210,"int64":637830114345350700,"uint64":637830114345350700,"base64long":"6vWZEBwH2gg=","base64int":"IgROIg=="}
+```
