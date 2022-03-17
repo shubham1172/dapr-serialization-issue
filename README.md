@@ -63,25 +63,15 @@ replicaone_1       | Got event            : {"int32":575538210,"uint32":57553821
 ## After components-contrib fix
 
 ```
-replicaone-1       | Requesting data from proxy: 9fbef17c-f3a1-4c28-ad81-d734700a0930
-owner-1            | Publishing record 1/5: {"int32":1943551969,"uint32":1943551969,"int64":637831348368977771,"uint64":637831348368977771,"base64long":"ay8kYjsI2gg=","base64int":"4T/Ycw=="}
-replicaone-dapr-1  | time="2022-03-17T17:27:17.0045344Z" level=debug msg="Processing Redis message 1647538037004-0" app_id=replicaoneapp instance=72c717be8b45 scope=dapr.contrib type=log ver=edge
-replicaone-1       | Got event            : {"int32":1943551969,"uint32":1943551969,"int64":637831348368977771,"uint64":637831348368977771,"base64long":"ay8kYjsI2gg=","base64int":"4T/Ycw=="}
-replicaone-dapr-1  | time="2022-03-17T17:27:17.0873581Z" level=debug msg="skipping status check due to error parsing result from pub/sub event 934d78b4-9252-4143-9c01-f7e9b10c9d51" app_id=replicaoneapp instance=72c717be8b45 scope=dapr.runtime type=log ver=edge
-issue-owner-1            | Publishing record 2/5: {"int32":1947637450,"uint32":1947637450,"int64":637831348373063252,"uint64":637831348373063252,"base64long":"VIZiYjsI2gg=","base64int":"ypYWdA=="}
-issue-replicaone-dapr-1  | time="2022-03-17T17:27:17.3079611Z" level=debug msg="Processing Redis message 1647538037307-0" app_id=replicaoneapp instance=72c717be8b45 scope=dapr.contrib type=log ver=edge
-issue-replicaone-1       | Got event            : {"int32":1947637450,"uint32":1947637450,"int64":637831348373063252,"uint64":637831348373063252,"base64long":"VIZiYjsI2gg=","base64int":"ypYWdA=="}
-issue-replicaone-dapr-1  | time="2022-03-17T17:27:17.3099919Z" level=debug msg="skipping status check due to error parsing result from pub/sub event dd746306-1680-4ecc-b1db-ee17bd8d0800" app_id=replicaoneapp instance=72c717be8b45 scope=dapr.runtime type=log ver=edge
-owner-1            | Publishing record 3/5: {"int32":1950839757,"uint32":1950839757,"int64":637831348376265559,"uint64":637831348376265559,"base64long":"V2OTYjsI2gg=","base64int":"zXNHdA=="}
-replicaone-dapr-1  | time="2022-03-17T17:27:17.6284389Z" level=debug msg="Processing Redis message 1647538037628-0" app_id=replicaoneapp instance=72c717be8b45 scope=dapr.contrib type=log ver=edge
-replicaone-1       | Got event            : {"int32":1950839757,"uint32":1950839757,"int64":637831348376265559,"uint64":637831348376265559,"base64long":"V2OTYjsI2gg=","base64int":"zXNHdA=="}
-replicaone-dapr-1  | time="2022-03-17T17:27:17.6302912Z" level=debug msg="skipping status check due to error parsing result from pub/sub event 6fd604b7-2d4e-4e1a-93f1-9a96bfdfe3fa" app_id=replicaoneapp instance=72c717be8b45 scope=dapr.runtime type=log ver=edge
-owner-1            | Publishing record 4/5: {"int32":1958501084,"uint32":1958501084,"int64":637831348383926886,"uint64":637831348383926886,"base64long":"ZkoIYzsI2gg=","base64int":"3Fq8dA=="}
-replicaone-dapr-1  | time="2022-03-17T17:27:18.3960484Z" level=debug msg="Processing Redis message 1647538038395-0" app_id=replicaoneapp instance=72c717be8b45 scope=dapr.contrib type=log ver=edge
-replicaone-1       | Got event            : {"int32":1958501084,"uint32":1958501084,"int64":637831348383926886,"uint64":637831348383926886,"base64long":"ZkoIYzsI2gg=","base64int":"3Fq8dA=="}
-replicaone-dapr-1  | time="2022-03-17T17:27:18.3989585Z" level=debug msg="skipping status check due to error parsing result from pub/sub event d7d5c216-df7a-423a-8c1a-d6b6776bde43" app_id=replicaoneapp instance=72c717be8b45 scope=dapr.runtime type=log ver=edge
-owner-1            | Publishing record 5/5: {"int32":1960827506,"uint32":1960827506,"int64":637831348386253308,"uint64":637831348386253308,"base64long":"/MkrYzsI2gg=","base64int":"ctrfdA=="}
-replicaone-dapr-1  | time="2022-03-17T17:27:18.6266703Z" level=debug msg="Processing Redis message 1647538038626-0" app_id=replicaoneapp instance=72c717be8b45 scope=dapr.contrib type=log ver=edge
-replicaone-1       | Got event            : {"int32":1960827506,"uint32":1960827506,"int64":637831348386253308,"uint64":637831348386253308,"base64long":"/MkrYzsI2gg=","base64int":"ctrfdA=="}
-replicaone-dapr-1  | time="2022-03-17T17:27:18.6281602Z" level=debug msg="skipping status check due to error parsing result from pub/sub event 33a9f3c6-3f46-4ae6-afd7-5d572f4bc464" app_id=replicaoneapp instance=72c717be8b45 scope=dapr.runtime type=log ver=edge
+replicaone-1       | Requesting data from proxy: 386f37f8-39bb-45b5-b267-9e9c54e3ec1b
+owner-1            | Publishing record 1/5: {"int32":35143001,"uint32":35143001,"int64":637831415180045507,"uint64":637831415180045507,"base64long":"wyxk8EoI2gg=","base64int":"WT0YAg=="}
+replicaone-1       | Got event            : {"int32":35143001,"uint32":35143001,"int64":637831415180045507,"uint64":637831415180045507,"base64long":"wyxk8EoI2gg=","base64int":"WT0YAg=="}
+owner-1            | Publishing record 2/5: {"int32":42243652,"uint32":42243652,"int64":637831415187146158,"uint64":637831415187146158,"base64long":"roXQ8EoI2gg=","base64int":"RJaEAg=="}
+replicaone-1       | Got event            : {"int32":42243652,"uint32":42243652,"int64":637831415187146158,"uint64":637831415187146158,"base64long":"roXQ8EoI2gg=","base64int":"RJaEAg=="}
+owner-1            | Publishing record 3/5: {"int32":52681663,"uint32":52681663,"int64":637831415197584169,"uint64":637831415197584169,"base64long":"Kctv8UoI2gg=","base64int":"v9sjAw=="}
+replicaone-1       | Got event            : {"int32":52681663,"uint32":52681663,"int64":637831415197584169,"uint64":637831415197584169,"base64long":"Kctv8UoI2gg=","base64int":"v9sjAw=="}
+owner-1            | Publishing record 4/5: {"int32":55000268,"uint32":55000268,"int64":637831415199902774,"uint64":637831415199902774,"base64long":"NiyT8UoI2gg=","base64int":"zDxHAw=="}
+replicaone-1       | Got event            : {"int32":55000268,"uint32":55000268,"int64":637831415199902774,"uint64":637831415199902774,"base64long":"NiyT8UoI2gg=","base64int":"zDxHAw=="}
+owner-1            | Publishing record 5/5: {"int32":59591746,"uint32":59591746,"int64":637831415204494252,"uint64":637831415204494252,"base64long":"rDvZ8UoI2gg=","base64int":"QkyNAw=="}
+replicaone-1       | Got event            : {"int32":59591746,"uint32":59591746,"int64":637831415204494252,"uint64":637831415204494252,"base64long":"rDvZ8UoI2gg=","base64int":"QkyNAw=="}
 ```

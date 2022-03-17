@@ -41,7 +41,7 @@ services:
      "--app-id", "ownerapp",
      "--dapr-http-port", "3501",
      "--app-port", "5001",
-     "--log-level", "debug",
+     # "--log-level", "debug",
      "--components-path", "/components",
      "--placement-host-address", "placement:50006" # Dapr's placement service can be reach via the docker DNS entry
     ]      
@@ -56,7 +56,7 @@ services:
      "--app-id", "replicaoneapp",
      "--dapr-http-port", "3502",
      "--app-port", "5002",
-     "--log-level", "debug",
+     # "--log-level", "debug",
      "--components-path", "/components",
      "--placement-host-address", "placement:50006" # Dapr's placement service can be reach via the docker DNS entry
     ]      
@@ -68,7 +68,7 @@ services:
     image: "shubham1172/dapr:dev-linux-amd64"
     command: [
       "./placement", 
-      "--log-level", "debug",
+      # "--log-level", "debug",
       "-port", "50006"
     ]
     ports:
