@@ -35,13 +35,13 @@ services:
       - example-network
 
   owner-dapr:
-    image: "shubham1172/daprd:dev-linux-amd64"
+    image: "shubham1172/daprd:dev2-linux-amd64"
     command: [
       "./daprd",
      "--app-id", "ownerapp",
      "--dapr-http-port", "3501",
      "--app-port", "5001",
-     # "--log-level", "debug",
+     "--log-level", "debug",
      "--components-path", "/components",
      "--placement-host-address", "placement:50006" # Dapr's placement service can be reach via the docker DNS entry
     ]      
@@ -50,13 +50,13 @@ services:
     network_mode: "service:owner"      
 
   replicaone-dapr:
-    image: "shubham1172/daprd:dev-linux-amd64"
+    image: "shubham1172/daprd:dev2-linux-amd64"
     command: [
       "./daprd",
      "--app-id", "replicaoneapp",
      "--dapr-http-port", "3502",
      "--app-port", "5002",
-     # "--log-level", "debug",
+     "--log-level", "debug",
      "--components-path", "/components",
      "--placement-host-address", "placement:50006" # Dapr's placement service can be reach via the docker DNS entry
     ]      
@@ -65,10 +65,10 @@ services:
     network_mode: "service:replicaone"
 
   placement:
-    image: "shubham1172/dapr:dev-linux-amd64"
+    image: "shubham1172/dapr:dev2-linux-amd64"
     command: [
       "./placement", 
-      # "--log-level", "debug",
+      "--log-level", "debug",
       "-port", "50006"
     ]
     ports:
